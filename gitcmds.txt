@@ -1,2 +1,25 @@
 git init
 git push -u origin master
+
+git init
+git config --global user.email "kkonnou@hotmail.com"
+git config --global user.name "Konstantinos Konstantinou"
+
+or create a new repository on the command line
+echo "# DatingApp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/kkonnou/DatingApp.git
+git push -u origin master
+…or push an existing repository from the command line
+git remote add origin https://github.com/kkonnou/DatingApp.git
+git push -u origin master
+
+https://github.com/kkonnou/DatingApp.git
+
+
+=============Clean and pull latest version ============
+git reset --hard HEAD
+git clean -xffd
+git pull

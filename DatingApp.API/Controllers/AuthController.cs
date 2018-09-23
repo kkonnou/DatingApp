@@ -21,6 +21,10 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             //validate user
+
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
+
             userForRegisterDto.UserName =  userForRegisterDto.UserName.ToLower();
             if (await _repo.UserExists( userForRegisterDto.UserName)) return BadRequest("Username already exists");
 
