@@ -45,8 +45,8 @@ namespace DatingApp.API.Controllers
       
             var claims = new[]
             {
-                
-            }
+               // 
+            };
         }
     }
 }
