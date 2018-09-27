@@ -6,4 +6,4 @@ namespace DatingApp.API.DTOs
         public string Password { get; set; }
         
     }
-}
+};
