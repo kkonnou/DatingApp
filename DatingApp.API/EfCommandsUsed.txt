@@ -3,3 +3,15 @@ dotnet ef database update
 
 dotnet ef migrations add AddUserEntity
 dotnet ef database update
+
+
+-----get migrations list------------
+dotnet ef migrations list
+
+-----remove latest migration ------------
+dotnet ef migrations remove
+
+------drop the database -------------
+dotnet ef database drop
+
+
