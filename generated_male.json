@@ -1,0 +1,102 @@
+[
+  {
+    "Username": "Nixon",
+    "Gender": "male",
+    "DateOfBirth": "1997-04-26",
+    "Password": "password",
+    "KnownAs": "Nixon",
+    "Created": "2017-06-24",
+    "Introduction": "Aute duis et dolore officia voluptate ex ad. Commodo eiusmod ipsum magna occaecat consectetur. Consectetur culpa labore Lorem consectetur magna fugiat. Qui enim sint non anim Lorem excepteur consequat enim. Non in labore nisi do incididunt aliquip amet eiusmod fugiat. Voluptate culpa ut magna deserunt voluptate pariatur aliquip et officia duis incididunt id fugiat exercitation. Dolor sit qui laboris incididunt dolore incididunt.\r\n",
+    "LookingFor": "Occaecat eiusmod elit id laboris cillum enim tempor tempor consequat. Amet incididunt reprehenderit irure eu anim consectetur fugiat occaecat ea. Duis fugiat amet esse consectetur irure commodo proident sit incididunt amet nulla. Ullamco pariatur cupidatat exercitation nisi commodo laboris.\r\n",
+    "Interests": "Amet culpa adipisicing labore et pariatur.",
+    "City": "Gibsonia",
+    "Country": "Puerto Rico",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/77.jpg",
+        "isMain": true,
+        "description": "Enim nostrud nisi excepteur amet exercitation."
+      }
+    ]
+  },
+  {
+    "Username": "Duke",
+    "Gender": "male",
+    "DateOfBirth": "1966-07-12",
+    "Password": "password",
+    "KnownAs": "Duke",
+    "Created": "2017-06-15",
+    "Introduction": "Id sunt adipisicing aliquip occaecat nisi ad. Voluptate aliquip cillum culpa voluptate ut ex occaecat ullamco consequat. Aliqua aute et ipsum sint. Laboris do qui nostrud mollit quis culpa deserunt do consequat excepteur sit veniam.\r\n",
+    "LookingFor": "Elit consectetur id aliquip enim fugiat nostrud deserunt dolore occaecat ea dolor quis. Sit magna officia ad irure. Commodo voluptate do consequat est in fugiat et voluptate dolore ipsum duis. Quis elit ad ad consectetur sint voluptate anim cillum non tempor Lorem. Cillum anim voluptate nostrud veniam minim ullamco magna ad eu nulla pariatur. Reprehenderit cillum adipisicing proident eu id magna ut aliquip aliqua fugiat fugiat.\r\n",
+    "Interests": "Ea laborum in enim consectetur duis Lorem eiusmod ullamco do dolor occaecat culpa fugiat in.",
+    "City": "Newcastle",
+    "Country": "Thailand",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/98.jpg",
+        "isMain": true,
+        "description": "Elit sunt eu consectetur nostrud anim laborum sint reprehenderit."
+      }
+    ]
+  },
+  {
+    "Username": "Johns",
+    "Gender": "male",
+    "DateOfBirth": "1974-06-12",
+    "Password": "password",
+    "KnownAs": "Johns",
+    "Created": "2017-01-22",
+    "Introduction": "Ea deserunt dolor in sunt pariatur sint reprehenderit occaecat aliqua minim est aute. Duis enim consequat tempor quis. Labore quis ex laborum mollit dolor aliquip proident labore incididunt laborum dolore qui elit. Reprehenderit aliqua exercitation eu minim fugiat laborum fugiat mollit sunt irure incididunt eu ex officia. Lorem id exercitation amet est id ad.\r\n",
+    "LookingFor": "Dolor excepteur sint eiusmod laborum minim qui proident incididunt officia qui irure amet. Anim eiusmod exercitation occaecat cillum non duis fugiat ullamco eu enim. Duis tempor sunt duis mollit Lorem. Exercitation tempor eu magna officia consequat proident aute ad.\r\n",
+    "Interests": "Veniam id nisi do sit ex proident quis esse commodo consectetur Lorem excepteur veniam.",
+    "City": "Kimmell",
+    "Country": "Pakistan",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/76.jpg",
+        "isMain": true,
+        "description": "Esse pariatur consequat labore nulla amet culpa commodo aliquip aliqua fugiat."
+      }
+    ]
+  },
+  {
+    "Username": "Kaufman",
+    "Gender": "male",
+    "DateOfBirth": "1961-03-06",
+    "Password": "password",
+    "KnownAs": "Kaufman",
+    "Created": "2017-03-01",
+    "Introduction": "Dolor dolor quis sit enim id enim eu sint sint ea consectetur magna. Ut dolor velit Lorem tempor cupidatat cupidatat consectetur irure. Occaecat duis aliquip magna exercitation est cupidatat velit officia excepteur labore deserunt incididunt. Et eiusmod deserunt velit nostrud officia incididunt. Magna velit est ad ea tempor excepteur mollit occaecat veniam. Dolore ipsum amet quis sint ullamco magna aliqua sint aliqua. Aliqua non excepteur fugiat voluptate veniam eiusmod elit officia commodo exercitation mollit deserunt proident.\r\n",
+    "LookingFor": "In do qui consectetur dolor quis minim veniam fugiat nostrud. Velit veniam ex elit voluptate laboris enim elit reprehenderit. Magna deserunt elit ullamco aute dolore culpa dolor tempor. Laboris sit tempor consectetur laborum in ullamco duis tempor ea nostrud tempor excepteur esse. Magna consectetur Lorem pariatur nisi proident duis eu amet proident laborum incididunt nostrud laborum consectetur. Tempor deserunt magna Lorem dolore aliquip nostrud ipsum sit fugiat proident enim do.\r\n",
+    "Interests": "Nostrud ea excepteur aliquip nulla ut do reprehenderit.",
+    "City": "Harrison",
+    "Country": "S. Georgia and S. Sandwich Isls.",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/38.jpg",
+        "isMain": true,
+        "description": "Sit quis sint quis elit esse irure duis et in."
+      }
+    ]
+  },
+  {
+    "Username": "Reese",
+    "Gender": "male",
+    "DateOfBirth": "1959-01-12",
+    "Password": "password",
+    "KnownAs": "Reese",
+    "Created": "2017-07-13",
+    "Introduction": "Nisi excepteur Lorem sint magna. Excepteur anim elit aute incididunt ipsum commodo aute incididunt velit magna est consectetur nostrud nostrud. Sint deserunt elit aliqua adipisicing labore est do minim laborum pariatur. Tempor aute ea amet ullamco excepteur consequat proident eiusmod nisi nulla occaecat.\r\n",
+    "LookingFor": "Veniam nulla id incididunt enim tempor. Nulla exercitation incididunt dolor deserunt consequat veniam incididunt id. Consectetur deserunt nisi commodo sit labore elit cillum. Sunt exercitation sint duis enim.\r\n",
+    "Interests": "Sint nostrud est sit labore nisi.",
+    "City": "Cavalero",
+    "Country": "Qatar",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/22.jpg",
+        "isMain": true,
+        "description": "Deserunt voluptate laboris voluptate ut sit tempor laboris ex."
+      }
+    ]
+  }
+]
