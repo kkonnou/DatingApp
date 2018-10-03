@@ -1,2 +1,13 @@
 Could not find module "@angular-devkit/build-angular"
 solution : npm install --save-dev @angular-devkit/build-angular
+
+
+
+
+----------------------------------------------------------------
+3rd party libraries 
+------------------------------
+npm install alertifyjs --save
+npm install @auth0/angular-jwt
+npm install ngx-bootstrap --save
+npm install bootswatch
