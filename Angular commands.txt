@@ -2,7 +2,8 @@ Could not find module "@angular-devkit/build-angular"
 solution : npm install --save-dev @angular-devkit/build-angular
 
 
-
+----generate components for route guards --------------------------------
+ng g guard auth --spec=false
 
 ----------------------------------------------------------------
 3rd party libraries 
