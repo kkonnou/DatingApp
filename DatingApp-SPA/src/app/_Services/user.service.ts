@@ -14,18 +14,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = environment.apiUrl;  // from environment folder where i assigned the api url
+  baseUrl = environment.apiUrl;
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.baseUrl + 'users', httpOptions);
-}
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + 'users', httpOptions);
+  }
 
-getUser(id): Observable<User> {
-  return this.http.get<User>(this.baseUrl + 'users/' + id, httpOptions);
-}
-
-
-
+  getUser(id): Observable<User> {
+    return this.http.get<User>(this.baseUrl + 'users/' + id, httpOptions);
+  }
 }
