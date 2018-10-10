@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Authorization': 'Bearer ' + localStorage.getItem('token')
