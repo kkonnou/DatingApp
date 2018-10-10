@@ -5,10 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule } from '@angular/forms';
 import { AlertifyService } from './_Services/alertify.service';
 import { RouterModule } from '@angular/router';
-
+import { JwtModule } from '@auth0/angular-jwt';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { NgxGalleryModule } from 'ngx-gallery';
+// =================================================================
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +27,12 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_Services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberListResolver } from './_resolvers/member-list.resolver.';
+
+export function tokengetter() {
+  localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -32,21 +43,34 @@ import { MemberCardComponent } from './members/member-card/member-card.component
       MemberListComponent,
       ListsComponent,
       MessagesComponent,
-      MemberCardComponent
+      MemberCardComponent,
+      MemberDetailComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      BsDatepickerModule.forRoot(),
+      RouterModule.forRoot(appRoutes),
+      NgxGalleryModule,
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: () => localStorage.getItem('tokken'),
+          whitelistedDomains: ['localhost:5000'],
+          blacklistedRoutes: ['localhost:5000/api/auth']
+        }
+      })
    ],
    providers: [
       AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      MemberDetailResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent
