@@ -28,7 +28,11 @@ export class UserService {
 
   updateUser(id: number, user: User) {
 
-    return this.http.put(this.baseUrl + 'users/' + id, user);
+    // return this.http.put(this.baseUrl + 'users/' + id, user);
+   const fullUrl = this.baseUrl + 'users/' + id;
+   console.log(fullUrl);
+
+   return this.http.put(fullUrl, user);
   }
 
 

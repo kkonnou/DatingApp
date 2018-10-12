@@ -9,17 +9,20 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class MemberEditResolver implements Resolve<User> {
-    constructor(private userService: UserService, private router: Router,
-        private alertify: AlertifyService, private authService: AuthService) {}
+  constructor (private userService: UserService,
+    private authServive: AuthService,
+    private router: Router,
+    private alertfiy: AlertifyService) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<User> {
-        return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
-            catchError(error => {
-                this.alertify.error('Problem retrieving your data');
-                this.router.navigate(['/members']);
-                return of(null);
-            })
-        );
-    }
+resolve(route: ActivatedRouteSnapshot): Observable<User> {
+return this.userService.getUser(this.authServive.decodedToken.nameid)
+    .pipe(
+        catchError(error => {
+            this.alertfiy.error('Problem retrieving your data: ' + error);
+            this.router.navigate(['/members']);
+            return of(null);
+        })
+    );
+}
 }
 
