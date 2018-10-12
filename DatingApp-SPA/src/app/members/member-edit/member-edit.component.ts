@@ -1,10 +1,10 @@
-import { AuthService } from './../../_Services/auth.service';
-import { AlertifyService } from './../../_Services/alertify.service';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { User } from '../../_models/user';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild, HostListener} from '@angular/core';
-import { User } from 'src/app/_models/user';
+import { AlertifyService } from '../../_Services/alertify.service';
 import { NgForm } from '@angular/forms';
-import { UserService } from 'src/app/_Services/user.service';
+import { UserService } from '../../_Services/user.service';
+import { AuthService } from '../../_Services/auth.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -12,17 +12,15 @@ import { UserService } from 'src/app/_Services/user.service';
   styleUrls: ['./member-edit.component.css']
 })
 export class MemberEditComponent implements OnInit {
-  @ViewChild('editForm') editForm: NgForm; // required for form reset
+  @ViewChild('editForm') editForm: NgForm;
   user: User;
-
-  // this is to send a message before closing the browser or the windows
+  photoUrl: string;
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
     if (this.editForm.dirty) {
       $event.returnValue = true;
     }
   }
-
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
     private userService: UserService, private authService: AuthService) { }
@@ -31,15 +29,21 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {
+    console.log('TokenID: ' + this.authService.decodedToken.nameid );
     this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
       this.alertify.success('Profile updated successfully');
-      this.editForm.reset(this.user);
+     // this.editForm.reset(this.user);
     }, error => {
+      console.log(error);
       this.alertify.error(error);
     });
   }
 
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
+  }
 }

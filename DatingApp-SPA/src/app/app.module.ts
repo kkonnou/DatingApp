@@ -8,9 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { AlertifyService } from './_Services/alertify.service';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+
 import { NgxGalleryModule } from 'ngx-gallery';
-import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+
 // =================================================================
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -27,8 +27,10 @@ import { UserService } from './_Services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberListResolver } from './_resolvers/member-list.resolver.';
-import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokengetter() {
   localStorage.getItem('token');
