@@ -32,7 +32,7 @@ export class UserService {
    const fullUrl = this.baseUrl + 'users/' + id;
    console.log(fullUrl);
 
-   return this.http.put(fullUrl, user);
+   return this.http.put(fullUrl, user, httpOptions);
   }
 
 
