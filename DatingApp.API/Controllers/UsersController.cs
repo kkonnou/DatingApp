@@ -44,12 +44,24 @@ namespace DatingApp.API.Controllers
         }
 
        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
+       [Route("jsonbody")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserForUpdateDto userForUpdateDto)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
+           // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //    return Unauthorized();
+             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var userFromRepo = await _repo.GetUser(id);
+
+            if (userFromRepo == null)
+            {
+                return NotFound($"Could not find a user with an ID of {id}");
+            }
+            
+            // if (userFromRepo.Id != currentUserId)
+            // {
+            //     return Unauthorized();
+            // }
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
