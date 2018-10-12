@@ -24,3 +24,6 @@ git reset --hard HEAD
 git clean -xffd
 git pull
 ======================================================
+
+=============Remove file from Git =====================
+git rm --cached appsettings.json
