@@ -8,9 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { AlertifyService } from './_Services/alertify.service';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-
 import { NgxGalleryModule } from 'ngx-gallery';
-
+import { FileUploadModule } from 'ng2-file-upload';
 // =================================================================
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -32,6 +31,7 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+
 
 export function tokengetter() {
   localStorage.getItem('token');
@@ -60,6 +60,7 @@ export function tokengetter() {
       BsDatepickerModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      FileUploadModule,
       JwtModule.forRoot({
         config: {
           tokenGetter: () => localStorage.getItem('tokken'),
