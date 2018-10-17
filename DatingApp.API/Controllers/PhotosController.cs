@@ -76,6 +76,8 @@ namespace DatingApp.API.Controllers
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
+
+                    
                 }
             }
 
@@ -106,10 +108,10 @@ namespace DatingApp.API.Controllers
             return BadRequest("Could not add the photo");
         }
 
-        [HttpPost("{id}/setMain")]
+        [HttpPost("{id}/setMainPhoto")]
         public async Task<IActionResult> SetMainPhoto(int userId, int id)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+           if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
             var user = await _repo.GetUser(userId);
