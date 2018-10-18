@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertifyService } from './_Services/alertify.service';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -61,6 +61,7 @@ export function tokengetter() {
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
       FileUploadModule,
+      ReactiveFormsModule,
       JwtModule.forRoot({
         config: {
           tokenGetter: () => localStorage.getItem('tokken'),
