@@ -14,3 +14,4 @@ npm install ngx-bootstrap --save
 npm install bootswatch
 npm install ngx-gallery --save
 npm i ng2-file-upload --save
+npm install time-ago-pipe --save
