@@ -8,7 +8,7 @@ using DatingApp.API.DTOs;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http.HttpResponse.AddPagination;
+
 
 namespace DatingApp.API.Controllers
 {

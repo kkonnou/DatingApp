@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +35,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 
 
 export function tokengetter() {
-  localStorage.getItem('token');
+  return localStorage.getItem('token');
 }
 
 @NgModule({
@@ -60,6 +60,7 @@ export function tokengetter() {
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
       FileUploadModule,
