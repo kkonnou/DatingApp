@@ -27,29 +27,30 @@ export class UserService {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
 
     const myHeaders = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')); // create header object
-    let myParams = new HttpParams();
+
+    let params = new HttpParams();
 
     if (page != null && itemsPerPage != null) {
-      myParams = myParams.append('pageNumber', page);
-      myParams = myParams.append('pageSize', itemsPerPage);
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
     }
 
     if (userParams != null) {
-      myParams = myParams.append('minAge', userParams.minAge);
-      myParams = myParams.append('maxAge', userParams.maxAge);
-      myParams = myParams.append('gender', userParams.gender);
-      myParams = myParams.append('orderBy', userParams.orderBy);
+      params = params.append('minAge', userParams.minAge);
+      params = params.append('maxAge', userParams.maxAge);
+      params = params.append('gender', userParams.gender);
+      params = params.append('orderBy', userParams.orderBy);
     }
 
     if (likesParam === 'Likers') {
-      myParams = myParams.append('Likers', 'true');
+      params = params.append('Likers', 'true');
     }
 
     if (likesParam === 'Likees') {
-      myParams = myParams.append('Likees', 'true');
+      params = params.append('Likees', 'true');
     }
 
-    return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params: myParams, headers: myHeaders})
+    return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response',  params: params, headers: myHeaders})
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
@@ -60,6 +61,7 @@ export class UserService {
         })
       );
   }
+
 
   getUser(id): Observable<User> {
     return this.http.get<User>(this.baseUrl + 'users/' + id, httpOptions);
@@ -78,7 +80,7 @@ export class UserService {
   }
 
   sendLike(id: number, recipientId: number) {
-    return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {});
+    return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {}, httpOptions);
   }
 }
 
