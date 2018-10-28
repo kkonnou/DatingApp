@@ -16,10 +16,8 @@ export class RegisterComponent implements OnInit {
 
   @Output() cancelRegister = new EventEmitter();
   user: User;
-  // model: any = {};
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
-
 
   constructor(private authService: AuthService, private router: Router,
     private alertify: AlertifyService, private fb: FormBuilder) { }
@@ -28,10 +26,8 @@ export class RegisterComponent implements OnInit {
     this.bsConfig = {
       containerClass: 'theme-red'
     };
-
     this.createRegisterForm();
   }
-
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
@@ -57,18 +53,17 @@ export class RegisterComponent implements OnInit {
         this.alertify.success('Registration successful');
       }, error => {
         this.alertify.error(error);
+        console.log(error);
       }, () => {
         this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/members']);
         });
       });
     }
-    // 'console.log(this.registerForm.value);
   }
 
   cancel() {
     this.cancelRegister.emit(false);
-    console.log('cancelled');
   }
 
 }

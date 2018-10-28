@@ -7,7 +7,7 @@ import { AuthService } from '../_Services/auth.service';
 import { Message } from '../_models/message';
 
 @Component({
-  selector: 'app-messages',
+  selector: 'app-member-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })

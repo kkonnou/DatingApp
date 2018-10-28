@@ -87,6 +87,7 @@ export class UserService {
 
   getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
     const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
+    const myHeaders = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')); // create header object
 
     let params = new HttpParams();
 
@@ -97,7 +98,7 @@ export class UserService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', {observe: 'response', params})
+    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', {observe: 'response', params: params, headers: myHeaders})
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
@@ -111,15 +112,15 @@ export class UserService {
   }
 
   getMessageThread(id: number, recipientId: number) {
-    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
+    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId, httpOptions);
   }
 
   sendMessage(id: number, message: Message) {
-    return this.http.post(this.baseUrl + 'users/' + id + '/messages', message);
+    return this.http.post(this.baseUrl + 'users/' + id + '/messages', message, httpOptions);
   }
 
   deleteMessage(id: number, userId: number) {
-    return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
+    return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {}, httpOptions);
   }
 
   markAsRead(userId: number, messageId: number) {
