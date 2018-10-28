@@ -2,10 +2,10 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 
 import { AlertifyService } from './../../_Services/alertify.service';
 import { UserService } from './../../_Services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { ActivatedRoute } from '@angular/router';
-
+import { TabsetComponent } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-member-detail',
@@ -13,20 +13,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-
+  @ViewChild('memberTabs') memberTabs: TabsetComponent;
   user: User;
-  galleryoptions: NgxGalleryOptions[];
-  galleryimages: NgxGalleryImage[];
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[];
 
   constructor(private userService: UserService, private alertify: AlertifyService,
-     private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
 
-    this.galleryoptions = [
+    this.route.queryParams.subscribe(params => {
+      const selectedTab = params['tab'];
+      this.memberTabs.tabs[selectedTab > 0 ? selectedTab : 0].active = true;
+    });
+
+    this.galleryOptions = [
       {
         width: '500px',
         height: '500px',
@@ -34,12 +39,9 @@ export class MemberDetailComponent implements OnInit {
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         preview: false
-
       }
     ];
-
-    this.galleryimages = this.getImages();
-
+    this.galleryImages = this.getImages();
   }
 
   getImages() {
@@ -53,6 +55,10 @@ export class MemberDetailComponent implements OnInit {
       });
       return imageUrls;
     }
+  }
+
+  selectTab(tabId: number) {
+    this.memberTabs.tabs[tabId].active = true;
   }
 
 }
