@@ -53,12 +53,11 @@ export class MemberDetailComponent implements OnInit {
         big: this.user.photos[i].url,
         description: this.user.photos[i].description
       });
-      return imageUrls;
     }
+    return imageUrls;
   }
 
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
   }
-
 }

@@ -1,0 +1,27 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "Logo_48.ico"
+   },
+   "chrome_settings_overrides": {
+      "homepage": "http://www.msn.com/?pc=__PARAM__&ocid=__PARAM__DHP&osmkt=__MSG_Homepage__",
+      "startup_pages": [ "http://www.msn.com/?pc=__PARAM__&ocid=__PARAM__DHP&osmkt=__MSG_Homepage__" ]
+   },
+   "default_locale": "en",
+   "description": "Set MSN as your default homepage",
+   "icons": {
+      "128": "Logo_128.ico",
+      "16": "Logo.png",
+      "48": "Logo_48.ico"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtFAyrfaFAf5Bgi5JC2Wh4sQlgDC46x7l+FiTapxl54JoNZmpLW1gW5BZggR6QORNJ3GfBKOCsu5IrI8QMRP26rjYNbZs+It2V2nEn0wkJuY2Wjv3amVpNbZWSSdkvgpqDqTDfeSFqWOP2O/zs66OzoI0LS8FSEOyXdeP0FJaRkbihH1s8hwmXg/bfZaYUMkIUjx0BEFUvOCUNgfd/X32VTqFuVaEg+NuOfIDsJh2jCno4gCsxUJ347dQZfmXBR0e7+bM0ZjjTzeMKQS1uSeFJyC0+G/cTWr5PDWK/QxD3if9h8Z6aHRj2dlsVZQhKnKZlLnj7mY/u+W3lW8kLUsMGwIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_ExtnName__",
+   "permissions": [ "http://g.ceipmsn.com/*", "http://*.bing.com/*", "cookies", "management" ],
+   "short_name": "__MSG_ExtnName__",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.0.1"
+}
