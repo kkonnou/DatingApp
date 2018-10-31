@@ -37,7 +37,7 @@ import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
-export function tokengetter() {
+export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
@@ -72,7 +72,7 @@ export function tokengetter() {
       ReactiveFormsModule,
       JwtModule.forRoot({
         config: {
-          tokenGetter: () => localStorage.getItem('tokken'),
+          tokenGetter: tokenGetter,
           whitelistedDomains: ['localhost:5000'],
           blacklistedRoutes: ['localhost:5000/api/auth']
         }
@@ -96,3 +96,4 @@ export function tokengetter() {
    ]
 })
 export class AppModule { }
+

@@ -18,3 +18,13 @@ in api controller change at the end to
             });
 -----------------------------------------------------------------------------------
 create the fallback controller in the controllers folder 
+---------------------------------------------------------------------------------
+inside environment.prod.ts  put this
+apiUrl: 'api/'  // this is for production
+
+---------------------------------------------------------------------------------
+Ahead of time Compilation + Production Mode + Bundling + Minification + Uglification + DeadCode Elimination
+ng build --prod
+----------------------------------------------------------------------------------
+in case of build problems turn off build optimizer like this
+ng build --prod --build-optimizer=false
