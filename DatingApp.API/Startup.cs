@@ -89,7 +89,16 @@ namespace DatingApp.API
            app.UseCors(x => x.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
            app.UseAuthentication();
-           app.UseMvc();
+           app.UseDefaultFiles(); //put it after build on production
+           app.UseStaticFiles(); //put it after build on production
+           // app.UseMvc();  (this one is for developing phase)
+           //this below is for production so api can know how to handle angular routes
+           app.UseMvc(routes => {
+               routes.MapSpaFallbackRoute(
+                   name: "spa-fallback",
+                   defaults: new {Controller = "Fallback", action = "Index"}
+               );
+            });
         }
     }
 }

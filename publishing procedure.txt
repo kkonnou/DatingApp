@@ -1,0 +1,20 @@
+inside angular json change:     
+from "dist/datingApp-SPA" to     "outputPath": "../DatingApp.API/wwwroot",
+-------------------------------------------------------------------
+after that build 
+PS E:\Projects\Prototypes\DatingApp\DatingApp-SPA> ng build
+--------------------------------------------------------------------------
+
+in api controller change at the end to 
+ app.UseDefaultFiles(); //put it after build on production
+           app.UseStaticFiles(); //put it after build on production
+           // app.UseMvc();  (this one is for developing phase)
+           //this below is for production so api can know how to handle angular routes
+           app.UseMvc(routes => {
+               routes.MapSpaFallbackRoute(
+                   name: "spa-fallback",
+                   defaults: new {Controller = "Fallback", action = "Index"}
+               );
+            });
+-----------------------------------------------------------------------------------
+create the fallback controller in the controllers folder 
