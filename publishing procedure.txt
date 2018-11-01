@@ -28,3 +28,33 @@ ng build --prod
 ----------------------------------------------------------------------------------
 in case of build problems turn off build optimizer like this
 ng build --prod --build-optimizer=false
+
+
+-----------------------------------------------------------------------------------
+Database provider change
+Pomelo.EntityFrameworkCore.MySql (in command shell nuget )
+install ad accept restore packages 
+check .csproj file to see tha the re
+
+-------------------------------------------------------------------------------------
+this is how you change environment in terminal
+setx ASPNETCORE_ENVIRONMENT "Development"
+or
+setx ASPNETCORE_ENVIRONMENT "Production"
+
+----------------------------------------------------------------------------------
+in launchsettings change from development to productionand save file
+
+
+in .vscode launch.json change
+  "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+
+to this 
+ "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+
+Remove migrations folder
+in terminal: dotnet ef migrations add mysqlinitial
+new migrations folder created for mysqlinitial
+dotnet ef database update
