@@ -58,3 +58,29 @@ Remove migrations folder
 in terminal: dotnet ef migrations add mysqlinitial
 new migrations folder created for mysqlinitial
 dotnet ef database update
+
+
+-------------------------------------------------------------
+install iis 
+new website (make path)
+properties select no managed code (because its .net core)
+
+PS E:\PublishedWebsites\datingappSrc> cd datingapp.api
+PS E:\PublishedWebsites\datingappSrc\datingapp.api> dotnet publish -o ..\..\(enter website path here)\
+
+---------------------------------------------------------
+set environrnmet to production from terminal or powershell
+$Env:ASPNETCORE_ENVIRONMENT = "Production"
+
+----------------------------------------------------------
+mysql must be installed on the deployment srv
+dotnet ef database update (to create the database)
+-------------------------------------------------------------
+check my sql from command prompt
+mysql -u rooe -p P@ssw0rd
+show databases
+quit
+
+--------------------------------------------------------------
+download and install : dotnet-hosting-2.1.5-win.exe
+
