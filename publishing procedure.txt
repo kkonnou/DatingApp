@@ -84,3 +84,7 @@ quit
 --------------------------------------------------------------
 download and install : dotnet-hosting-2.1.5-win.exe
 
+--------------------------------------------------------------
+remember if it an intranet server edit windows\system32\drivers\etc\hosts
+and enter 127.0.0.1   datingapp.com (or the website name you entered on iis)
+
