@@ -34,38 +34,38 @@ namespace DatingApp.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // This is for Mysql
-            services.AddDbContext<DataContext>(x => x.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
-            .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning)));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(opt => {
-                    opt.SerializerSettings.ReferenceLoopHandling = 
-                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
+        // public void ConfigureServices(IServiceCollection services)
+        // {
+        //     // This is for Mysql
+        //     services.AddDbContext<DataContext>(x => x.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
+        //     .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning)));
+        //     services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+        //         .AddJsonOptions(opt => {
+        //             opt.SerializerSettings.ReferenceLoopHandling = 
+        //             Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        //         });
 
 
-            services.AddCors();
-            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
-            services.AddAutoMapper();
-            services.AddTransient<Seed>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IDatingRepository, DatingRepository>();
-            services.AddScoped<LogUserActivity>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-        }
+        //     services.AddCors();
+        //     services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+        //     services.AddAutoMapper();
+        //     services.AddTransient<Seed>();
+        //     services.AddScoped<IAuthRepository, AuthRepository>();
+        //     services.AddScoped<IDatingRepository, DatingRepository>();
+        //     services.AddScoped<LogUserActivity>();
+        //     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        //         .AddJwtBearer(options => {
+        //             options.TokenValidationParameters = new TokenValidationParameters
+        //             {
+        //                 ValidateIssuerSigningKey = true,
+        //                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+        //                 ValidateIssuer = false,
+        //                 ValidateAudience = false
+        //             };
+        //         });
+        // }
 
-          public void ConfigureDevelopmentServices(IServiceCollection services)
+          public void ConfigureServices(IServiceCollection services)
         {
             // This is for SqlLite
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
@@ -119,7 +119,7 @@ namespace DatingApp.API
             }
 
            // app.UseHttpsRedirection();
-           // seeder.SeedUsers();       // enable when seeding!!!!!!
+          //seeder.SeedUsers();       // enable when seeding!!!!!!
            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
            app.UseCors(x => x.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials());

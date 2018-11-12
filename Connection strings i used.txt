@@ -1,0 +1,2 @@
+"DefaultConnection": "Server=localhost; Database=datingApp; Uid=root; Pwd=P@ssw0rd"
+"DefaultConnection": "Data Source=DatingApp.db"
