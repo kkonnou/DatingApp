@@ -102,7 +102,16 @@ namespace DatingApp.API
                 });
 
             //----------------------------------------------------------
+            // ------------------For Policy based AUthorization----------------
 
+            services.AddAuthorization(options => {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
+                options.AddPolicy("VIPOnly", policy => policy.RequireRole("VIP"));
+                
+            });
+
+            //-------------------------------------------------------
             services.AddMvc(options => 
                 {
                     var policy = new AuthorizationPolicyBuilder()
@@ -152,7 +161,7 @@ namespace DatingApp.API
             }
 
            // app.UseHttpsRedirection();
-          //seeder.SeedUsers();       // enable when seeding!!!!!!
+          seeder.SeedUsers();       // enable when seeding!!!!!!
            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
            app.UseCors(x => x.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
