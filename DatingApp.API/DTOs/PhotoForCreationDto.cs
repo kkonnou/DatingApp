@@ -11,6 +11,7 @@ namespace DatingApp.API.DTOs
         public DateTime DateAdded { get; set; }
         public string PublicId { get; set; }
 
+        public bool IsApproved {get; set;}
         public PhotoForCreationDto()
         {
             DateAdded = DateTime.Now;

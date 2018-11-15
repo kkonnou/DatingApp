@@ -18,8 +18,9 @@ namespace DatingApp.API.Controllers
 {
     [Route("api/users/{userId}/photos")]
     [ApiController]
-    public class PhotosController: ControllerBase
-    { private readonly IDatingRepository _repo;
+    public class PhotosController : ControllerBase
+    {
+        private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _cloudinary;
@@ -57,7 +58,7 @@ namespace DatingApp.API.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var userFromRepo = await _repo.GetUser(userId);
+            var userFromRepo = await _repo.GetUser(userId, true);
 
             var file = photoForCreationDto.File;
 
@@ -75,21 +76,11 @@ namespace DatingApp.API.Controllers
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
-
-                    
                 }
             }
 
-             if ( uploadResult.Length > 0)
-             {
-                photoForCreationDto.Url = uploadResult.Uri.ToString();
-                photoForCreationDto.PublicId = uploadResult.PublicId;
-             }
-             else
-             {
-                 return BadRequest("Something went wrong with the upload");
-             }
-            
+            photoForCreationDto.Url = uploadResult.Uri.ToString();
+            photoForCreationDto.PublicId = uploadResult.PublicId;
 
             var photo = _mapper.Map<Photo>(photoForCreationDto);
 
@@ -107,13 +98,13 @@ namespace DatingApp.API.Controllers
             return BadRequest("Could not add the photo");
         }
 
-        [HttpPost("{id}/setMainPhoto")]
+        [HttpPost("{id}/setMain")]
         public async Task<IActionResult> SetMainPhoto(int userId, int id)
         {
-           if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var user = await _repo.GetUser(userId);
+            var user = await _repo.GetUser(userId, true);
 
             if (!user.Photos.Any(p => p.Id == id))
                 return Unauthorized();
@@ -140,7 +131,7 @@ namespace DatingApp.API.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var user = await _repo.GetUser(userId);
+            var user = await _repo.GetUser(userId, true);
 
             if (!user.Photos.Any(p => p.Id == id))
                 return Unauthorized();

@@ -18,9 +18,9 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
+
         public UsersController(IDatingRepository repo, IMapper mapper)
         {
             _mapper = mapper;
@@ -32,20 +32,21 @@ namespace DatingApp.API.Controllers
         {
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userFromEepo = await _repo.GetUser(currentUserId);
+            var userFromRepo = await _repo.GetUser(currentUserId, true);
 
             userParams.UserId = currentUserId;
 
             if (string.IsNullOrEmpty(userParams.Gender))
             {
-                userParams.Gender= userFromEepo.Gender == "male" ? "female": "male";
+                userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
             }
 
             var users = await _repo.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
-            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+            Response.AddPagination(users.CurrentPage, users.PageSize,
+                users.TotalCount, users.TotalPages);
 
             return Ok(usersToReturn);
         }
@@ -53,7 +54,9 @@ namespace DatingApp.API.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
-            var user = await _repo.GetUser(id);
+            var isCurrentUser = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value) == id;
+            
+            var user = await _repo.GetUser(id, isCurrentUser);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
@@ -66,17 +69,17 @@ namespace DatingApp.API.Controllers
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var userFromRepo = await _repo.GetUser(id);
+            var userFromRepo = await _repo.GetUser(id, true);
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
             if (await _repo.SaveAll())
                 return NoContent();
-            
+
             throw new Exception($"Updating user {id} failed on save");
         }
 
-         [HttpPost("{id}/like/{recipientId}")]
+        [HttpPost("{id}/like/{recipientId}")]
         public async Task<IActionResult> LikeUser(int id, int recipientId)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
@@ -87,7 +90,7 @@ namespace DatingApp.API.Controllers
             if (like != null)
                 return BadRequest("You already like this user");
             
-            if (await _repo.GetUser(recipientId) == null)
+            if (await _repo.GetUser(recipientId, false) == null)
                 return NotFound();
 
             like = new Like

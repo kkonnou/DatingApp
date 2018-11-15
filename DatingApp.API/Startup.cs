@@ -161,7 +161,7 @@ namespace DatingApp.API
             }
 
            // app.UseHttpsRedirection();
-          seeder.SeedUsers();       // enable when seeding!!!!!!
+           // seeder.SeedUsers();       // enable when seeding!!!!!!
            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
            app.UseCors(x => x.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
